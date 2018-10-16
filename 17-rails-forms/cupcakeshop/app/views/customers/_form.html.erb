@@ -1,0 +1,24 @@
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @customer do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <br>
+  <hr>
+
+  <%= f.collection_check_boxes :cupcake_ids, @cupcakes, :id, :name %>
+
+  <br>
+  <hr>
+
+  <%= f.submit id: 'submit' %>
+<% end %>
