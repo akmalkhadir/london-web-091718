@@ -43,7 +43,7 @@ end
   <%= f.submit id: 'submit' %>
 <% end %>
 
-# edit 
+# edit
 <h1>Edit Cupcake!</h1>
 
 <%= link_to "cancel", cupcake_path(@cupcake) %>
@@ -55,6 +55,7 @@ end
 <% end %>
 
 # index
+
 <h1>Get yer cupcakes here!</h1>
 
 <%= link_to "Add Cupcake", new_cupcake_path %>
@@ -107,6 +108,7 @@ class CupcakesController < ApplicationController
 
   def create
     @cupcake = Cupcake.create(cupcake_params)
+    # Redirection conditionals (validation almost always happen in model)
     if @cupcake.valid?
       redirect_to @cupcake
     else
@@ -154,7 +156,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # resources :cupcakes
-  
+
   get "/cupcakes", to: 'cupcakes#index'
   get "/cupcakes/new", to: 'cupcakes#new', as: "new_cupcake"
   get "/cupcakes/:id", to: 'cupcakes#show', as: "cupcake"
